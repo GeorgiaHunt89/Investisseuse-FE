@@ -10,6 +10,10 @@ import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import { StoreProvider } from './state/GlobalState';
 import Profile from './pages/Profile';
+import Investments from './pages/Investments';
+import Business from './pages/Business';
+import About from './pages/About';
+import Blog from './pages/Blog';
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_BASEURL + '/graphql',
@@ -42,6 +46,10 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/investments" component={Investments} />
+              <Route exact path="/business" component={Business} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/blog" component={Blog} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>
