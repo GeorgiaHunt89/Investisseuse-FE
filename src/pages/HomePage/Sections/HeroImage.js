@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 // Importing Components
 import { Button } from '../../../components/Button';
 import { Typography } from '../../../components/Typography';
-import { HeroLayout } from '../../HomePage/Sections/HomePageHeroLayout';
+import { HeroLayout } from '../../HomePage/Sections/HeroLayout';
 
 // Styling
 const backgroundImage = '../../img/HomePageImage.png';
