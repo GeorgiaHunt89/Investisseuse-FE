@@ -1,17 +1,20 @@
 import React from 'react';
+import { IndexRoute, Redirect } from 'react-router';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Home from './pages/Home';
+import requireAuth from './state/require_authentication';
+
+import Home from './pages/home/HomePage';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Nav from './components/Nav';
+import Nav from './components/navigation/NavBar';
 import { StoreProvider } from './state/GlobalState';
 import Profile from './pages/Profile';
-import Investments from './pages/Investments';
-import Business from './pages/Business';
+// import Investors from './pages/Investors';
+import founder from './pages/Founders';
 import About from './pages/About';
 import Blog from './pages/Blog';
 
@@ -40,16 +43,16 @@ function App() {
       <Router>
         <div>
           <StoreProvider>
-            <Nav />
+            {/* <Nav /> */}
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/Login" component={Login} />
+              <Route exact path="/Signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/investments" component={Investments} />
-              <Route exact path="/business" component={Business} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/blog" component={Blog} />
+              {/* <Route exact path="/Investors" component={requireAuth(Investors)} /> */}
+              <Route exact path="/Founders" component={requireAuth(founder)} />
+              <Route exact path="/About" component={About} />
+              <Route exact path="/Blog" component={Blog} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>
