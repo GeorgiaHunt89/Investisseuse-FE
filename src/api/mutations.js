@@ -12,18 +12,22 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $role: String!) {
+  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $role: Boolean!) {
     addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, role: $role) {
       token
       user {
         _id
+        firstName
+        lastName
+        email
+        role
       }
     }
   }
 `;
 
 export const UPDATE_USER = gql`
-  mutation updateUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $role: String!) {
+  mutation updateUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $role: Boolean!) {
     addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, role: $role) {
       token
       user {
@@ -58,7 +62,8 @@ export const ADD_BUSINESS = gql`
       shareQuantity: $shareQuantity
       pitchDeck: $pitchDeck
       category: $category
-    ) {
+    )
+    business {
       _id
       companyName
       description
