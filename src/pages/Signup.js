@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { Form } from 'semantic-ui-react';
+import { Link } from '@material-ui/core/';
 import { useMutation } from '@apollo/client';
 import Auth from '../state/auth';
 import { ADD_USER } from '../api/mutations';
-import { Form } from 'semantic-ui-react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+
 import { MemoryRouter as Router } from 'react-router';
-import { Link as RouterLink } from 'react-router-dom';
 
 import NavBar from '../components/navigation/NavBar';
 import AppForm from '../components/form/AppForm';
@@ -66,11 +67,12 @@ function Signup(props) {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Sign Up
+            Sign In
           </Typography>
           <Typography variant="body2" align="center">
+            {'Already have an account? '}
             <Link href="/Login" align="center" underline="always">
-              Already have an account?
+              Log in here
             </Link>
           </Typography>
         </React.Fragment>
@@ -135,16 +137,10 @@ function Signup(props) {
         </Grid>
         <Grid container spacing={5}>
           <Grid item xs={18} sm={12}>
-            <Form.Select
-              fluid
-              label="Please select either Investor or Founder"
-              options={role}
-              placeholder="Investor / Founder"
-              type="role"
-              id=""
-              onChange={handleChange}
-              component={InputTextField}
-            />
+            <Form.Group options={role} />
+            <Typography variant="h6">Are you an Investor or Founder?"</Typography>
+            <Form.Checkbox label="Founder" />
+            <Form.Checkbox label="Investor" />
           </Grid>
         </Grid>
 
@@ -153,7 +149,7 @@ function Signup(props) {
           className={classes.button}
           color="secondary"
           component={RouterLink}
-          to="/login"
+          to="/Founders"
           fullWidth
         >
           {setFormState || formState ? 'In progress…' : 'Sign Up'}
