@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 
 // Sections for this page
-
 import HeroLayout from './sections/HeroLayout';
 import HeroImage from './sections/HeroImage';
 

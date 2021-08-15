@@ -7,6 +7,11 @@ import Auth from '../state/auth';
 import { ADD_USER } from '../api/mutations';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import FilledInput from '@material-ui/core/FilledInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 import { MemoryRouter as Router } from 'react-router';
 
@@ -19,6 +24,7 @@ import FormFeedback from '../components/form/FormFeedback';
 import { Field, FormSpy } from 'react-final-form';
 import Typography from '../components/typography/Typography';
 import InputTextField from '../components/form/InputTextField';
+import Password from '../components/Password';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -36,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 function Signup(props) {
   const classes = useStyles();
   const [sent, setSent] = React.useState(false);
-  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '', role: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '', founder: false });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -49,17 +55,14 @@ function Signup(props) {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
     setFormState({
       ...formState,
       [name]: value,
     });
   };
-
-  const role = [
-    { key: 'Founder', text: 'Founder', value: 'founder' },
-    { key: 'Investor', text: 'Investor', value: 'investor' },
-  ];
 
   return (
     <React.Fragment>
@@ -67,7 +70,7 @@ function Signup(props) {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Sign In
+            Sign Up
           </Typography>
           <Typography variant="body2" align="center">
             {'Already have an account? '}
@@ -79,80 +82,79 @@ function Signup(props) {
         <Form.Group Submit={handleFormSubmit} widths="equal">
           <Grid container spacing={5}>
             <Grid item xs={18} sm={12}>
-              <Form.Input
-                fluid
-                label="First name"
-                placeholder="First name"
-                type="firstName"
+              <TextField
+                label="First Name"
                 id="firstName"
+                defaultValue=""
+                className={classes.textField}
+                margin="normal"
+                variant="filled"
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 onChange={handleChange}
-                component={InputTextField}
               />
             </Grid>
           </Grid>
           <Grid container spacing={5}>
             <Grid item xs={18} sm={12}>
-              <Form.Input
-                fluid
-                label="Last name"
-                placeholder="Last name"
-                type="lastName"
+              <TextField
+                label="Last Name"
                 id="lastName"
+                defaultValue=""
+                className={classes.textField}
+                margin="normal"
+                variant="filled"
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 onChange={handleChange}
-                component={InputTextField}
               />
             </Grid>
           </Grid>
         </Form.Group>
         <Grid container spacing={5}>
           <Grid item xs={18} sm={12}>
-            <Form.Group widths="equal">
-              <Form.Input fluid label="Password" placeholder="*****" type="password" id="pwd" onChange={handleChange} />
-              <Form.Input
-                fluid
-                label="Confirm Password"
-                placeholder="*****"
-                type="confirmPassword"
-                id="confirmPwd"
-                onChange={handleChange}
-                component={InputTextField}
-              />
-            </Form.Group>
+            <Password />
           </Grid>
         </Grid>
         <Grid container spacing={5}>
           <Grid item xs={18} sm={12}>
-            <Form.Group widths="equal">
-              <Form.Input
-                fluid
-                label="Email Address"
-                placeholder="youremail@address.com"
-                type="email"
-                id="email"
-                onChange={handleChange}
-                component={InputTextField}
-              />
-            </Form.Group>
+            <TextField
+              label="Email Address"
+              id="email"
+              defaultValue=""
+              className={classes.textField}
+              margin="normal"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={handleChange}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={5}>
           <Grid item xs={18} sm={12}>
-            <Form.Group options={role} />
-            <Typography variant="h6">Are you an Investor or Founder?"</Typography>
-            <Form.Checkbox label="Founder" />
-            <Form.Checkbox label="Investor" />
+            <Form.Group margin="normal" variant="filled" />
+            <Typography variant="h8">Please select if you are a Founder</Typography>
+            <br />
+            <label margin="normal" variant="filled" className={classes.textField} for="founder">
+              Founder
+            </label>
+            <input type="checkbox" id="founder" name="founder" value={formState.founder} onChange={handleChange} />
           </Grid>
         </Grid>
 
         <FormButton
+          to="/Profile"
           type="submit"
           className={classes.button}
           color="secondary"
           component={RouterLink}
-          to="/Founders"
           fullWidth
         >
-          {setFormState || formState ? 'In progress…' : 'Sign Up'}
+          Submit
         </FormButton>
       </AppForm>
     </React.Fragment>
