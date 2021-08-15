@@ -12,10 +12,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/navigation/NavBar';
 import { StoreProvider } from './state/GlobalState';
-import BusinessProfile from './pages/BusinessProfile';
-import NewBusinessProfile from './pages/NewBusinessProfile';
+import Profile from './pages/Profile';
+import BusinessProfile from './pages/founders/BusinessProfile';
+import NewBusinessProfile from './pages/founders/NewBusinessProfile';
 // import Investors from './pages/Investors';
-import FoundersDashboard from './pages/FoundersDashboard';
+import FoundersDashboard from './pages/founders/FoundersDashboard';
 import About from './pages/About';
 import Blog from './pages/Blog';
 
@@ -49,6 +50,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/Login" component={Login} />
               <Route exact path="/Signup" component={Signup} />
+              <Route exact path="/Profile" component={Profile} />
               <Route exact path="/BusinessProfile" component={BusinessProfile} />
               <Route exact path="/NewBusinessProfile" component={NewBusinessProfile} />
               {/* <Route exact path="/Investors" component={requireAuth(Investors)} /> */}
