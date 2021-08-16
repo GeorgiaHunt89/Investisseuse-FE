@@ -1,12 +1,18 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-
 import Link from '@material-ui/core/Link';
+
+// ----------------------------------------------------------------------
+
+// Components for this page
 import AppBar from '../navigation/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../navigation/Toolbar';
 
@@ -23,7 +29,7 @@ const styles = (theme) => ({
     display: 'flex',
   },
   leftLinkActive: {
-    color: theme.palette.common.white,
+    color: '#Deba54',
   },
   right: {
     flex: 1,
@@ -32,11 +38,11 @@ const styles = (theme) => ({
   },
   rightLink: {
     fontSize: 16,
-    color: theme.palette.common.white,
+    color: '#2B3D5B',
     marginLeft: theme.spacing(3),
   },
   linkSecondary: {
-    color: theme.palette.secondary.main,
+    color: '#Deba54',
   },
   logo: {
     display: 'flex',
