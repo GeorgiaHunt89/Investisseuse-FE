@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Importing @material-ui/ components
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { withStyles } from '@material-ui/core/styles';
 
-// Importing Components
+// ----------------------------------------------------------------------
+
+// Components for this page
 import Button from '../../../components/button/button.js';
 import Typography from '../../../components/typography/Typography.js';
 import HeroLayout from './HeroLayout.js';
+
+// ----------------------------------------------------------------------
 
 // Styling
 const backgroundImage = '../../../img/HomePageImage.png';

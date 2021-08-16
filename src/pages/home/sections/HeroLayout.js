@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Importing @material-ui/ components
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { withStyles } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 
+// ----------------------------------------------------------------------
+
+// Styling
 const LogoImage = '../../img/Investisseuse.png';
 
 const styles = (theme) => ({

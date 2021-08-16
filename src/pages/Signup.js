@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-// import { Form } from 'semantic-ui-react';
 import { Link } from '@material-ui/core/';
 import { useMutation } from '@apollo/client';
 import { MemoryRouter as Router } from 'react-router';

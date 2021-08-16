@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Typography from '../../../components/typography/Typography';
 import { PlayCircleFilledWhite } from '@material-ui/icons';
+
+// ----------------------------------------------------------------------
+
+// Components for this page
+import Typography from '../../../components/typography/Typography';
+
+// ----------------------------------------------------------------------
 
 // Styling
 const leatherBackground = './src/img/leatherBackground.png';
