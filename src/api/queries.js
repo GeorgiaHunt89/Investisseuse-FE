@@ -31,3 +31,19 @@ export const QUERY_BUSINESS = gql`
     }
   }
 `;
+
+export const QUERY_INVESTMENT = gql`
+  {
+    shareNumber
+    investor {
+      _id
+      firstName
+      lastName
+      email
+    }
+    business {
+      _id
+      companyName
+    }
+  }
+`;
