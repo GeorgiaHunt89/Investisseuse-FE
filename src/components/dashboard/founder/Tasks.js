@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import { Form, FormikProvider, useFormik } from 'formik';
-// material
+
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { Box, Card, Checkbox, CardHeader, Typography, FormControlLabel } from '@material-ui/core';
-import Stack from '@material-ui/core/Stack';
+import { Stack } from '@material-ui/';
 
 // ----------------------------------------------------------------------
 

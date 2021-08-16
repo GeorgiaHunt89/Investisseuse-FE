@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Importing @material-ui/ components
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { withStyles } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 
-// Sections for this page
+// ----------------------------------------------------------------------
+
+// Components for this page
 import HeroLayout from './sections/HeroLayout';
 import HeroImage from './sections/HeroImage';
 import AboutUs from './sections/AboutUs';

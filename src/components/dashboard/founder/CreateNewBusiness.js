@@ -1,18 +1,21 @@
 import { Icon } from '@iconify/react';
-import androidFilled from '@iconify/icons-ant-design/android-filled';
-// material
+
+// ----------------------------------------------------------------------
+
+// Imports from Material Ui
 import { alpha, styled } from '@material-ui/core/styles';
 import { Card, Typography } from '@material-ui/core';
 import { Link } from '@material-ui/core';
 
 // ----------------------------------------------------------------------
 
+//Styling
 const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: 'none',
   textAlign: 'center',
   padding: theme.spacing(5, 0),
   color: theme.palette.primary.darker,
-  backgroundColor: theme.palette.primary.lighter,
+  backgroundColor: '#2B3D5B',
 }));
 
 const IconWrapperStyle = styled('div')(({ theme }) => ({
@@ -24,11 +27,8 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
   height: theme.spacing(8),
   justifyContent: 'center',
   marginBottom: theme.spacing(3),
-  color: theme.palette.primary.dark,
-  backgroundImage: `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0)} 0%, ${alpha(
-    theme.palette.primary.dark,
-    0.24
-  )} 100%)`,
+  color: '#deba54',
+  backgroundImage: `linear-gradient(135deg, ${alpha('#deba54', 0)} 0%, ${alpha('#deba54', 0.24)} 100%)`,
 }));
 
 // ----------------------------------------------------------------------
@@ -37,13 +37,15 @@ export default function CreateNewBusiness() {
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Icon icon={androidFilled} width={24} height={24} />
+        <Icon icon="teenyicons:star-circle-outline" />
       </IconWrapperStyle>
-      <Typography variant="h3">Create a New Business</Typography>
-      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+      <Typography style={{ color: 'white' }} variant="h3">
+        Create a New Business
+      </Typography>
+      <Typography style={{ color: 'white' }} variant="subtitle2" sx={{ opacity: 0.72 }}>
         Attract new investors
       </Typography>
-      <Link href="/NewBusinessProfile" align="center" underline="always">
+      <Link style={{ color: '#deba54' }} href="/NewBusinessProfile" align="center" underline="always">
         Sign Up here
       </Link>
     </RootStyle>

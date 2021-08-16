@@ -2,6 +2,10 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { QUERY_USER } from '../api/queries';
 import { useQuery } from '@apollo/client';
+
+// ----------------------------------------------------------------------
+
+// Components for this page
 import FoundersDashboard from './founders/FoundersDashboard';
 import InvestorsDashboard from './investors/InvestorsDashboard';
 
