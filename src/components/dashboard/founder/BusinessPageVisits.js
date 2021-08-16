@@ -14,7 +14,8 @@ const CHART_DATA = [
     data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
   },
   {
-    type: 'line',
+    name: 'Average',
+    type: 'area',
     data: [30, 25, 36, 30, 45, 35, 54, 52, 59, 36, 39],
   },
 ];
