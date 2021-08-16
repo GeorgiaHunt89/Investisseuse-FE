@@ -4,7 +4,6 @@ import androidFilled from '@iconify/icons-ant-design/android-filled';
 import { alpha, styled } from '@material-ui/core/styles';
 import { Card, Typography } from '@material-ui/core';
 import { Link } from '@material-ui/core';
-// import { NewBlogPost } from './blog/NewBlogPost';
 
 // ----------------------------------------------------------------------
 
@@ -12,8 +11,8 @@ const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: 'none',
   textAlign: 'center',
   padding: theme.spacing(5, 0),
-  color: theme.palette.primary.darker,
-  backgroundColor: theme.palette.primary.lighter,
+  color: 'white',
+  backgroundColor: '#Deba54',
 }));
 
 const IconWrapperStyle = styled('div')(({ theme }) => ({
@@ -40,11 +39,12 @@ export default function CreateNewBlogPost() {
       <IconWrapperStyle>
         <Icon icon={androidFilled} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">Blog Post</Typography>
-      <Link href="/NewBlogPost" align="center" underline="always">
-        <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-          Keep investors upto date with progress
-        </Typography>
+      <Typography variant="h3">Create a New BlogP ost</Typography>
+      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
+        Attract new investors
+      </Typography>
+      <Link href="/NewBusinessProfile" align="center" underline="always">
+        Sign Up here
       </Link>
     </RootStyle>
   );
