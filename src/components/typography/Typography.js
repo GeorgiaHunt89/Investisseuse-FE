@@ -5,6 +5,13 @@ import { capitalize } from '@material-ui/core/utils';
 import MuiTypography from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
+  markedH1Center: {
+    height: 4,
+    width: 73,
+    display: 'block',
+    margin: `${theme.spacing(1)}px auto 0`,
+    backgroundColor: theme.palette.secondary.main,
+  },
   markedH2Center: {
     height: 4,
     width: 73,
@@ -32,6 +39,13 @@ const styles = (theme) => ({
     display: 'block',
     marginTop: theme.spacing(0.5),
     background: 'currentColor',
+  },
+  h6: {
+    height: 2,
+    width: 28,
+    display: 'block',
+    marginTop: theme.spacing(0.5),
+    background: '#Deba54',
   },
 });
 
