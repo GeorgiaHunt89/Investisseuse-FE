@@ -77,10 +77,10 @@ function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '', founder: false });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (values) => {
+    // event.preventDefault();
     const mutationResponse = await addUser({
-      variables: { ...formState },
+      variables: { ...values },
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
@@ -112,9 +112,11 @@ function Signup(props) {
               </Link>
             </Typography>
           </React.Fragment>
-          <Form onSubmit={handleFormSubmit} subscription={{ submitting: true }} onChange={handleChange}>
-            {({ handleSubmit2, submitting }) => (
-              <form onSubmit={handleSubmit2} className={classes.form} noValidate>
+          <Form
+            onSubmit={handleFormSubmit}
+            subscription={{ submitting: true }}
+            render={({ handleSubmit, submitting }) => (
+              <form onSubmit={handleSubmit} className={classes.form}>
                 <Field
                   autoComplete="firstName"
                   autoFocus
@@ -152,10 +154,16 @@ function Signup(props) {
                   size="large"
                 />
                 <Typography style={{ size: 'small' }}>Please select if you are a Founder</Typography>
-                <label margin="normal" variant="filled" className={classes.textField} for="founder">
-                  Founder
-                </label>
-                <input type="checkbox" id="founder" name="founder" value={formState.founder} onChange={handleChange} />
+                <Field
+                  component={(props) => <input type="checkbox" {...props} />}
+                  disabled={submitting || sent}
+                  fullWidth
+                  label="Founder?"
+                  margin="normal"
+                  name="role"
+                  required
+                  size="small"
+                />
                 <FormSpy subscription={{ submitError: true }}>
                   {({ submitError }) =>
                     submitError ? (
@@ -180,7 +188,7 @@ function Signup(props) {
                 </Grid>
               </form>
             )}
-          </Form>
+          />
         </AppForm>
       </Paper>
       <AppFooter />
