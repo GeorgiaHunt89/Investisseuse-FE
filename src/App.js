@@ -17,7 +17,7 @@ import BusinessProfile from './pages/founders/BusinessProfile';
 import NewBusinessProfile from './pages/founders/NewBusinessProfile';
 // import Investors from './pages/Investors';
 import FoundersDashboard from './pages/founders/FoundersDashboard';
-import About from './pages/About';
+import About from './pages/home/sections/AboutUs';
 import Blog from './pages/Blog';
 
 const httpLink = createHttpLink({
