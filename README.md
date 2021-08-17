@@ -12,15 +12,33 @@
 
 ## Description
 
-A react powered website that uses Material-UI and graphql.
+A hub for female business owners and start up creators to meet and engage potential investors.
+
+(https://github.com/GeorgiaHunt89/Investisseuse-FE)
 
 ## Installation Instructions
 
-To install this application simply fork the repo and clone the code to your terminal. Then install the required dependencies.
+To install this application simply fork the front end repo `'Investisseuse-FE'` and the back end repo `'Investisseuse-BE'`, then clone the code to your terminal. Once opened in Virtual Studio the install the required dependencies and the application is ready to run.
 
 ## Usage Information
 
-This project is designed to provide founders to investors easily.
+This project is designed to provide women founders a business hub and potential investors to take their startup to the next level. This application provides users with a space to:
+
+- Create a hub to keep track of all the working parts of my business.
+- List their business on a platform that is viewed by potential investors.
+- Easily allows investors to discover potential startup unicorns.
+- Allows founders to easily update investors with blog posts and newsletters regarding the state of the business.
+- Provides a networking environment for potential investors and find to mix in a comfortable friendly setting.
+
+This application was created with:
+
+- React
+- Graphql
+- Decode
+- Apollo
+- Material-Ui
+- ApexCharts
+- DropZone
 
 ## Contributors
 
