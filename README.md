@@ -13,6 +13,7 @@
 ## Description
 
 A hub for female business owners and start up creators to meet and engage potential investors.
+<br>
 
 ![image](https://github.com/GeorgiaHunt89/Investisseuse-FE/blob/main/src/img/Screen%20Shot%202021-08-16%20at%207.28.10%20pm.png?raw=true)
 
