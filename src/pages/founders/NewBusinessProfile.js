@@ -17,6 +17,7 @@ import FilledInput from '@material-ui/core/FilledInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { DropzoneArea } from 'material-ui-dropzone';
+import { Input } from '@material-ui/core/';
 
 // ----------------------------------------------------------------------
 
@@ -116,97 +117,74 @@ function NewBusinessProfile(props) {
             </Grid>
           </Grid>
         </React.Fragment>
-        <Form onSubmit={handleFormSubmit} subscription={{ submitting: true }} onChange={handleChange}>
-          {({ handleSubmit2, submitting }) => (
-            <form onSubmit={handleSubmit2} className={classes.form} noValidate>
-              <Field
-                autoComplete="companyName"
-                autoFocus
-                component={InputTextField}
-                fullWidth
-                label="Company Name"
-                margin="normal"
-                name="companyName"
-                required
-                size="large"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <Field
-                autoComplete="description"
-                autoFocus
-                component={InputTextField}
-                style={{ margin: 8 }}
-                fullWidth
-                label="Description"
-                margin="normal"
-                name="description"
-                required
-                size="large"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <Field
-                autoComplete="website"
-                autoFocus
-                component={InputTextField}
-                // style={{ margin: 8 }}
-                fullWidth
-                label="Website"
-                margin="normal"
-                name="website"
-                required
-                size="large"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-
-              <FormControl margin="normal" fullWidth className={classes.margin} variant="filled">
-                <InputLabel htmlFor="sharePrice">Share Price</InputLabel>
-                <FilledInput id="sharePrice" startAdornment={<InputAdornment position="start">$</InputAdornment>} />
+        <form onSubmit={handleFormSubmit}>
+          <Grid container spacing={5}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <InputLabel htmlFor="companyName">Company Name</InputLabel>
+                <Input id="companyName"></Input>
               </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={5}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <InputLabel htmlFor="description">Description</InputLabel>
+                <Input id="description"></Input>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={8}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <InputLabel htmlFor="website">Website</InputLabel>
+                <Input id="website"></Input>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={8}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <InputLabel htmlFor="shareQuantity">Share Quantity</InputLabel>
+                <Input id="sharequantity"></Input>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={8}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <InputLabel htmlFor="sharePrice">Share Price</InputLabel>
+                <Input id="shareprice" startAdornment={<InputAdornment position="start">$</InputAdornment>}></Input>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={8}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <DropZonePitchDeck id="pitchDeck" />
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={8}>
+            <Grid item xs={18} sm={12}>
+              <FormControl>
+                <DropZoneLogo id="logo" />
+              </FormControl>
+            </Grid>
+          </Grid>
 
-              <Field
-                autoComplete="share quantity"
-                autoFocus
-                component={InputTextField}
-                fullWidth
-                label="Share Quantity"
-                margin="normal"
-                name="sharequantity"
-                required
-                size="large"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-
-              <DropZonePitchDeck />
-
-              <DropZoneLogo />
-
-              <FormSpy subscription={{ submitError: true }}>
-                {({ submitError }) =>
-                  submitError ? (
-                    <FormFeedback className={classes.feedback} error>
-                      {submitError}
-                    </FormFeedback>
-                  ) : null
-                }
-              </FormSpy>
-              <Grid container spacing={5}>
-                <Grid item xs={18} sm={12}>
-                  <FormButton className={classes.button} disabled={submitting} size="large" color="#white" fullWidth>
-                    {'Creating Business'}
-                  </FormButton>
-                </Grid>
-              </Grid>
-            </form>
-          )}
-        </Form>
+          <Grid container spacing={8}>
+            <Grid item xs={18} sm={12}>
+              <Button
+                onSubmit={handleFormSubmit}
+                style={{ color: 'white', backgroundColor: '#deba54' }}
+                variant="contained"
+              >
+                Create Business
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
       </AppForm>
       <AppFooter />
     </React.Fragment>
