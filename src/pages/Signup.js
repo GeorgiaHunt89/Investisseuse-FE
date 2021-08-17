@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { Link } from '@material-ui/core/';
+import { Link } from 'react-router-dom';
+import { Input } from '@material-ui/core/';
 import { useMutation } from '@apollo/client';
 import { MemoryRouter as Router } from 'react-router';
-import { Form, Field, FormSpy } from 'react-final-form';
+// import { Form, Field, FormSpy } from 'react-final-form';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +33,7 @@ import Typography from '../components/typography/Typography';
 import InputTextField from '../components/form/InputTextField';
 import Password from '../components/Password';
 import AppFooter from '../components/Footer';
+import { linkToRecord } from 'ra-core';
 
 // Styling
 const LoginBackgroundImg = '../../img/Login-Background-Img.png';
@@ -72,9 +73,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Signup(props) {
-  const classes = useStyles();
-  const [sent, setSent] = React.useState(false);
-  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '', founder: false });
+  // const classes = useStyles();
+  // const [sent, setSent] = React.useState(false);
+  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '', role: false });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (values) => {
@@ -87,14 +88,22 @@ function Signup(props) {
   };
 
   const handleChange = (event) => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
     });
   };
+
+  // const Checkboxes = (event) => {
+  //   const target = event.target;
+  //   const value = target.type === 'checkbox' ? target.checked : target.value;
+  //   const name = target.name;
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
 
   return (
     <React.Fragment>
@@ -107,88 +116,66 @@ function Signup(props) {
             </Typography>
             <Typography variant="body2" align="center">
               {'Already have an account? '}
-              <Link style={{ color: '#Deba54' }} component={RouterLink} to="/Login" align="center" underline="always">
+              <Link style={{ color: '#Deba54' }} href="/Login" align="center" underline="always">
                 Log in here
               </Link>
             </Typography>
           </React.Fragment>
-          <Form
-            onSubmit={handleFormSubmit}
-            subscription={{ submitting: true }}
-            render={({ handleSubmit, submitting }) => (
-              <form onSubmit={handleSubmit} className={classes.form}>
-                <Field
-                  autoComplete="firstName"
-                  autoFocus
-                  component={InputTextField}
-                  disabled={submitting || sent}
-                  fullWidth
-                  label="First Name"
-                  margin="normal"
-                  name="firstName"
-                  required
-                  size="large"
-                />
-                <Field
-                  fullWidth
-                  size="large"
-                  component={InputTextField}
-                  disabled={submitting || sent}
-                  required
-                  name="lastName"
-                  autoComplete="lastName"
-                  label="Last Name"
-                  type="lastName"
-                  margin="normal"
-                />
-                <Field
-                  autoComplete="email"
-                  autoFocus
-                  component={InputTextField}
-                  disabled={submitting || sent}
-                  fullWidth
-                  label="Email"
-                  margin="normal"
-                  name="email"
-                  required
-                  size="large"
-                />
-                <Typography style={{ size: 'small' }}>Please select if you are a Founder</Typography>
-                <Field
-                  component={(props) => <input type="checkbox" {...props} />}
-                  disabled={submitting || sent}
-                  fullWidth
-                  label="Founder?"
-                  margin="normal"
-                  name="role"
-                  required
-                  size="small"
-                />
-                <FormSpy subscription={{ submitError: true }}>
-                  {({ submitError }) =>
-                    submitError ? (
-                      <FormFeedback className={classes.feedback} error>
-                        {submitError}
-                      </FormFeedback>
-                    ) : null
-                  }
-                </FormSpy>
-                <Grid container spacing={5}>
-                  <Grid item xs={18} sm={12}>
-                    <FormButton
-                      className={classes.button}
-                      disabled={submitting || sent}
-                      size="large"
-                      color="#white"
-                      fullWidth
-                    >
-                      {submitting || sent ? 'In progress…' : 'Sign In'}
-                    </FormButton>
+          <form onSubmit={handleFormSubmit}>
+            <Grid container spacing={5}>
+              <Grid item xs={18} sm={12}>
+                <FormControl>
+                  <InputLabel htmlFor="firstName">First Name</InputLabel>
+                  <Input id="firstName"></Input>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={18} sm={12}>
+                <FormControl>
+                  <InputLabel htmlFor="lastName">Last Name</InputLabel>
+                  <Input id="lastName"></Input>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={5}>
+              <Grid item xs={18} sm={12}>
+                <FormControl>
+                  <InputLabel htmlFor="email">Email</InputLabel>
+                  <Input id="email"></Input>
+                </FormControl>
+              </Grid>
+            </Grid>
+            <Grid container spacing={8}>
+              <Grid item xs={18} sm={12}>
+                <FormControl>
+                  <Grid container spacing={8}>
+                    <Grid item xs={18} sm={12}></Grid>
                   </Grid>
-                </Grid>
-              </form>
-            )}
-          />
+                  <Checkbox
+                    // checked={isTrue}
+                    // onChange={(e) => {
+                    //   console.log('target checked? - ', e.target.checked);
+                    //   setIsTrue(e.target.checked);
+                    // }}
+                    id="role"
+                    value="founder"
+                    inputProps={{
+                      'aria-label': 'Please click this box if you are a Founder',
+                    }}
+                  />
+                </FormControl>
+                <InputLabel htmlFor="role">Check if Founder</InputLabel>
+              </Grid>
+            </Grid>
+            <Grid container spacing={8}>
+              <Grid item xs={18} sm={12}>
+                <Button style={{ color: 'white', backgroundColor: '#deba54' }} variant="contained">
+                  Submit
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
         </AppForm>
       </Paper>
       <AppFooter />
