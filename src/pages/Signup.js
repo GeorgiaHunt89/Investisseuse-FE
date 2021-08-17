@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Input } from '@material-ui/core/';
 import { useMutation } from '@apollo/client';
 import { MemoryRouter as Router } from 'react-router';
+import { Link } from 'react-router-dom';
 // import { Form, Field, FormSpy } from 'react-final-form';
 
 // ----------------------------------------------------------------------
@@ -116,7 +116,7 @@ function Signup(props) {
             </Typography>
             <Typography variant="body2" align="center">
               {'Already have an account? '}
-              <Link style={{ color: '#Deba54' }} href="/Login" align="center" underline="always">
+              <Link style={{ color: '#Deba54' }} to="/Signup" align="center" underline="always">
                 Log in here
               </Link>
             </Typography>
@@ -152,6 +152,26 @@ function Signup(props) {
                   <Grid container spacing={8}>
                     <Grid item xs={18} sm={12}></Grid>
                   </Grid>
+                  <Grid container spacing={5}>
+                    <Grid item xs={18} sm={12}>
+                      <FormControl>
+                        <InputLabel type="password" htmlFor="password">
+                          Password
+                        </InputLabel>
+                        <Input
+                          fullWidth
+                          size="large"
+                          id="password"
+                          component={InputTextField}
+                          required
+                          name="password"
+                          label="Password"
+                          type="password"
+                          margin="normal"
+                        />
+                      </FormControl>
+                    </Grid>
+                  </Grid>
                   <Checkbox
                     // checked={isTrue}
                     // onChange={(e) => {
@@ -170,7 +190,11 @@ function Signup(props) {
             </Grid>
             <Grid container spacing={8}>
               <Grid item xs={18} sm={12}>
-                <Button style={{ color: 'white', backgroundColor: '#deba54' }} variant="contained">
+                <Button
+                  onSubmit={handleFormSubmit}
+                  style={{ color: 'white', backgroundColor: '#deba54' }}
+                  variant="contained"
+                >
                   Submit
                 </Button>
               </Grid>
